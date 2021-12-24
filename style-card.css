@@ -1,0 +1,95 @@
+* { 
+  /*
+     _    ___  ____    _    ____ ___  ____  _____ 
+    / \  / _ \| __ )  / \  / ___/ _ \|  _ \| ____|
+   / _ \| | | |  _ \ / _ \| |  | | | | |_) |  _|  
+  / ___ \ |_| | |_) / ___ \ |__| |_| |  _ <| |___ 
+ /_/   \_\___/|____/_/   \_\____\___/|_| \_\_____|
+                                                  
+  Author: aobacore
+  Version: 1.2
+  Date: 01:35:27, December 4, 2021
+  This CSS is only for personal use. 
+  It may be revoked or modified without notice at any time. Please be informed.
+  Character drawing generation: http://patorjk.com/software/taag Style: Standard
+  */  
+  
+}   
+    .card {
+    background: #fff;
+    background-size: contain;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  .card h1 {
+    font-size: 20px;
+    margin: 5px auto 0;
+    letter-spacing: 1px;
+  }
+  .card h2 {
+    margin: auto;
+    color: #5c6170;
+    font-weight: 300;
+    font-size: 15px;
+  }
+  .card red {
+    margin: auto;
+    color: #da0000;
+    font-weight: 300;
+    font-size: 15px;
+  }
+  .card blue {
+    margin: auto;
+    color: #0099ff;
+    font-weight: 300;
+    font-size: 15px;
+  }
+  .card yellow {
+    margin: auto;
+    color: #fffb00;
+    font-weight: 300;
+    font-size: 15px;
+  }
+  .card green {
+    margin: auto;
+    color: #00e626;
+    font-weight: 300;
+    font-size: 15px;
+  }
+  .card orange {
+    margin: auto;
+    color: #ff8800;
+    font-weight: 300;
+    font-size: 15px;
+  }
+
+  .card .button {
+    display: block;
+    text-decoration: none;
+    background: #0d84ff;
+    color: #f9f9f9;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 200px;
+    transition: 0.2s;
+  }
+  .card .button span {
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: top;
+  }
+  .card .button:hover {
+    background: #409eff;
+  }
+  .card img {
+  background-color: #ffffff;
+  border-radius: 10%;
+  margin: auto auto 15px;
+  display: block;
+}
+
