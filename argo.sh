@@ -72,7 +72,7 @@ checkStatus() {
 installCloudFlared() {
     [[ $cloudflaredStatus == "已安装" ]] && red "检测到已安装并登录CloudFlare Argo Tunnel，无需重复安装！！" && exit 1
     last_version=$(curl -Ls "https://api.github.com/repos/cloudflare/cloudflared/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-    wget -N --no-check-certificate https://github.com/cloudflare/cloudflared/releases/download/$last_version/cloudflared-linux-$(archAffix) -O /usr/local/bin/cloudflared
+    wget -N --no-check-certificate https://github.com/cloudflare/cloudflared/releases/download$last_version/cloudflared-linux-$(archAffix) -O /usr/local/bin/cloudflared
     chmod +x /usr/local/bin/cloudflared
 }
 
