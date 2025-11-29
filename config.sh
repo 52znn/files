@@ -2,6 +2,13 @@
 
 CONFIG="/etc/soga/soga.conf"
 
+# ====== 输入 panel_type ======
+echo
+read -p "请输入 panel_type（回车默认为 v2board）: " PANEL_TYPE
+if [ -z "$PANEL_TYPE" ]; then
+    PANEL_TYPE="v2board"
+fi
+
 # ====== 选择 server_type ======
 echo "请选择要设置的代理类型："
 echo "1) shadowsocks"
@@ -13,10 +20,10 @@ echo
 read -p "请输入数字 (1-4): " choice
 
 case $choice in
-    1) TYPE="shadowsocks" ;;
-    2) TYPE="v2ray" ;;
-    3) TYPE="trojan" ;;
-    4) TYPE="hysteria" ;;
+    1) NODE_TYPE="shadowsocks" ;;
+    2) NODE_TYPE="v2ray" ;;
+    3) NODE_TYPE="trojan" ;;
+    4) NODE_TYPE="hysteria" ;;
     *) 
         echo "❌ 输入无效！必须是 1~4."
         exit 1
@@ -59,11 +66,18 @@ fi
 echo
 read -p "请输入流媒体解锁DNS，回车跳过: " DEFAULT_DNS
 
+# ====== 写入 panel_type ======
+if grep -q "^panel_type=" "$CONFIG"; then
+    sed -i "s/^panel_type=.*/panel_type=${PANEL_TYPE}/" "$CONFIG"
+else
+    echo "panel_type=${PANEL_TYPE}" >> "$CONFIG"
+fi
+
 # ====== 写入 server_type ======
 if grep -q "^server_type=" "$CONFIG"; then
-    sed -i "s/^server_type=.*/server_type=${TYPE}/" "$CONFIG"
+    sed -i "s/^server_type=.*/server_type=${NODE_TYPE}/" "$CONFIG"
 else
-    echo "server_type=${TYPE}" >> "$CONFIG"
+    echo "server_type=${NODE_TYPE}" >> "$CONFIG"
 fi
 
 # ====== 写入 node_id ======
@@ -108,7 +122,8 @@ fi
 
 echo
 echo "✔ 配置已更新成功："
-echo "  server_type=${TYPE}"
+echo "  type=${PANEL_TYPE}"
+echo "  server_type=${NODE_TYPE}"
 echo "  node_id=${NODE_ID}"
 echo "  webapi_url=${WEBAPI_URL}"
 echo "  webapi_key=${WEBAPI_KEY}"
