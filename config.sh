@@ -23,6 +23,14 @@ case $choice in
         ;;
 esac
 
+# ====== 输入 node_id ======
+echo
+read -p "请输入 node_id（数字，例如：1）: " NODE_ID
+if [ -z "$NODE_ID" ]; then
+    echo "❌ node_id 不能为空！"
+    exit 1
+fi
+
 # ====== 输入 webapi_url ======
 echo
 read -p "请输入 webapi_url（例如：https://example.com）: " WEBAPI_URL
@@ -56,6 +64,13 @@ if grep -q "^server_type=" "$CONFIG"; then
     sed -i "s/^server_type=.*/server_type=${TYPE}/" "$CONFIG"
 else
     echo "server_type=${TYPE}" >> "$CONFIG"
+fi
+
+# ====== 写入 node_id ======
+if grep -q "^node_id=" "$CONFIG"; then
+    sed -i "s/^node_id=.*/node_id=${NODE_ID}/" "$CONFIG"
+else
+    echo "node_id=${NODE_ID}" >> "$CONFIG"
 fi
 
 # ====== 写入 webapi_url ======
@@ -92,8 +107,9 @@ else
 fi
 
 echo
-echo "✔ 配置已写入："
+echo "✔ 配置已更新成功："
 echo "  server_type=${TYPE}"
+echo "  node_id=${NODE_ID}"
 echo "  webapi_url=${WEBAPI_URL}"
 echo "  webapi_key=${WEBAPI_KEY}"
 echo "  cert_domain=${CERT_DOMAIN}"
