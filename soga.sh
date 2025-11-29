@@ -45,7 +45,7 @@ fi
 read -p "请输入 cert_domain（可留空）: " CERT_DOMAIN
 
 # ====== 输入 default_dns ======
-read -p "请输入 default_dns（可留空）: " DEFAULT_DNS
+#read -p "请输入 default_dns（可留空）: " DEFAULT_DNS
 
 # ====== 修改 type ======
 if grep -q "^type=" "$CONFIG"; then
@@ -90,11 +90,11 @@ else
 fi
 
 # ====== 修改 default_dns ======
-if grep -q "^default_dns=" "$CONFIG"; then
-    sed -i "s/^default_dns=.*/default_dns=$DEFAULT_DNS/" "$CONFIG"
-else
-    echo "default_dns=$DEFAULT_DNS" >> "$CONFIG"
-fi
+#if grep -q "^default_dns=" "$CONFIG"; then
+#    sed -i "s/^default_dns=.*/default_dns=$DEFAULT_DNS/" "$CONFIG"
+#else
+#    echo "default_dns=$DEFAULT_DNS" >> "$CONFIG"
+#fi
 
 echo "配置已更新："
 echo "type=$TYPE"
@@ -103,4 +103,4 @@ echo "webapi_url=$WEBAPI_URL"
 echo "webapi_key=$WEBAPI_KEY"
 echo "cert_mode=$CERT_MODE"
 echo "cert_domain=$CERT_DOMAIN"
-echo "default_dns=$DEFAULT_DNS"
+#echo "default_dns=$DEFAULT_DNS"
